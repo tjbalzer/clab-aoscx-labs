@@ -1,0 +1,65 @@
+name: aoscxlab
+
+mgmt:
+  network: aoscxlab
+  ipv4-subnet: 172.10.103.0/24
+
+topology:
+  kinds:
+    aruba_aoscx:
+      image: vrnetlab/aruba_arubaos-cx:20240731173624
+    linux:
+      image: ghcr.io/srl-labs/network-multitool
+  nodes:
+    SW1:
+      kind: aruba_aoscx
+      startup-config: configs/sw1.cfg
+      mgmt-ipv4: 172.10.103.11
+      group: spine
+    SW2:
+      kind: aruba_aoscx
+      startup-config: configs/sw2.cfg
+      mgmt-ipv4: 172.10.103.12
+      group: spine
+    SW3:
+      kind: aruba_aoscx
+      startup-config: configs/sw3.cfg
+      mgmt-ipv4: 172.10.103.13
+      group: leaf
+    SW4:
+      kind: aruba_aoscx
+      startup-config: configs/sw4.cfg
+      mgmt-ipv4: 172.10.103.14
+      group: leaf
+    HostA:
+      kind: linux
+      mgmt-ipv4: 172.10.103.51
+      exec:
+        - ip address add 10.10.100.11/24 dev eth1
+        - ip route add 10.10.0.0/16 via 10.10.100.1 dev eth1
+        - ip route add 192.168.0.0/16 via 10.10.100.1 dev eth1
+        - ip address add fd00:10:10:101::11/64 dev eth1
+        - ip -6 route add default via fd00:10:10:100::1 dev eth1
+      group: server
+    HostB:
+      kind: linux
+      mgmt-ipv4: 172.10.103.52
+      exec:
+        - ip address add 10.10.101.11/24 dev eth1
+        - ip route add 10.10.0.0/16 via 10.10.101.1 dev eth1
+        - ip route add 192.168.0.0/16 via 10.10.101.1 dev eth1
+        - ip address add fd00:10:10:101::11/64 dev eth1
+        - ip -6 route add default via fd00:10:10:101::1 dev eth1  
+      group: server
+
+  links:
+    - endpoints: ["SW1:1/1/1", "SW3:1/1/8"]
+    - endpoints: ["SW1:1/1/2", "SW4:1/1/8"]
+    - endpoints: ["SW1:1/1/7", "SW2:1/1/7"]
+    - endpoints: ["SW1:1/1/8", "SW2:1/1/8"]
+    - endpoints: ["SW1:1/1/9", "SW2:1/1/9"]
+    - endpoints: ["SW2:1/1/1", "SW3:1/1/9"]
+    - endpoints: ["SW2:1/1/2", "SW4:1/1/9"]
+    - endpoints: ["SW3:1/1/1", "HostA:eth1"]
+    - endpoints: ["SW4:1/1/1", "HostB:eth1"]
+

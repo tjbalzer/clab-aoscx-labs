@@ -1,0 +1,50 @@
+name: aoscxlab
+
+mgmt:
+  network: aoscxlab
+  ipv4-subnet: 172.10.103.0/24
+
+topology:
+  kinds:
+    aruba_aoscx:
+      image: vrnetlab/aruba_arubaos-cx:20240731173624
+    linux:
+      image: alpine:latest
+  nodes:
+    Core:
+      kind: aruba_aoscx
+      #startup-config: configs/core.cfg
+      mgmt-ipv4: 172.10.103.11
+    Agg-1:
+      kind: aruba_aoscx
+      #startup-config: configs/agg-1.cfg
+      mgmt-ipv4: 172.10.103.12
+    Agg-2:
+      kind: aruba_aoscx
+      #startup-config: configs/agg-2.cfg
+      mgmt-ipv4: 172.10.103.13
+    RAcc-1:
+      kind: aruba_aoscx
+      #startup-config: configs/racc-1.cfg
+      mgmt-ipv4: 172.10.103.14
+    RAcc-2:
+      kind: aruba_aoscx
+      #startup-config: configs/racc-2.cfg
+      mgmt-ipv4: 172.10.103.15
+    Client-1:
+      kind: linux
+      mgmt-ipv4: 172.10.103.50
+    Client-2:
+      kind: linux
+      mgmt-ipv4: 172.10.103.51
+
+  links:
+    - endpoints: ["Core:1/1/1", "Agg-1:1/1/9"]
+    - endpoints: ["Core:1/1/2", "Agg-2:1/1/9"]
+    - endpoints: ["Agg-1:1/1/8", "Agg-2:1/1/8"]
+    - endpoints: ["Agg-1:1/1/1", "RAcc-1:1/1/8"]
+    - endpoints: ["Agg-1:1/1/2", "RAcc-2:1/1/8"]
+    - endpoints: ["Agg-2:1/1/1", "RAcc-1:1/1/9"]
+    - endpoints: ["Agg-2:1/1/2", "RAcc-2:1/1/9"]
+    - endpoints: ["RAcc-1:1/1/1", "Client-1:eth1"]
+    - endpoints: ["RAcc-2:1/1/1", "Client-2:eth1"]

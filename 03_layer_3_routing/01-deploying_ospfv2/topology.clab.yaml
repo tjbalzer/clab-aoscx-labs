@@ -1,0 +1,52 @@
+name: aoscxlab
+
+mgmt:
+  network: aoscxlab
+  ipv4-subnet: 172.10.103.0/24
+
+topology:
+  kinds:
+    aruba_aoscx:
+      image: vrnetlab/aruba_arubaos-cx:20240731173624
+    linux:
+      image: ghcr.io/srl-labs/network-multitool
+  nodes:
+    SwitchA:
+      kind: aruba_aoscx
+      startup-config: configs/switch_a.cfg
+      mgmt-ipv4: 172.10.103.11
+    SwitchB:
+      kind: aruba_aoscx
+      startup-config: configs/switch_b.cfg
+      mgmt-ipv4: 172.10.103.12
+    SwitchC:
+      kind: aruba_aoscx
+      startup-config: configs/switch_c.cfg
+      mgmt-ipv4: 172.10.103.13
+    SwitchD:
+      kind: aruba_aoscx
+      startup-config: configs/switch_d.cfg
+      mgmt-ipv4: 172.10.103.14
+    HostA:
+      kind: linux
+      mgmt-ipv4: 172.10.103.51
+      exec:
+        - ip address add 8.1.1.1/24 dev eth1
+        - ip route add 0.0.0.0/4 via 8.1.1.254 dev eth1
+        - ip route add 100.0.0.0/5 via 8.1.1.254 dev eth1
+    HostB:
+      kind: linux
+      mgmt-ipv4: 172.10.103.52
+      exec:
+        - ip address add 7.1.1.1/24 dev eth1
+        - ip route add 0.0.0.0/4 via 7.1.1.254 dev eth1
+        - ip route add 100.0.0.0/5 via 7.1.1.254 dev eth1
+
+  links:
+    - endpoints: ["SwitchA:1/1/1", "SwitchB:1/1/1"]
+    - endpoints: ["SwitchA:1/1/2", "SwitchC:1/1/2"]
+    - endpoints: ["SwitchA:1/1/3", "HostA:eth1"]
+    - endpoints: ["SwitchB:1/1/2", "SwitchD:1/1/2"]
+    - endpoints: ["SwitchC:1/1/1", "SwitchD:1/1/1"]
+    - endpoints: ["SwitchD:1/1/3", "HostB:eth1"]
+

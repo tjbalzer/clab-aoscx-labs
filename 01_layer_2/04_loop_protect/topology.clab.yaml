@@ -1,0 +1,30 @@
+name: aoscxlab
+
+mgmt:
+  network: aoscxlab
+  ipv4-subnet: 172.10.103.0/24
+
+topology:
+  kinds:
+    aruba_aoscx:
+      image: vrnetlab/aruba_arubaos-cx:20240731173624
+    linux:
+      image: ghcr.io/srl-labs/network-multitool
+  nodes:
+    Switch1:
+      kind: aruba_aoscx
+      startup-config: configs/switch_1.cfg
+      mgmt-ipv4: 172.10.103.11
+    Switch2:
+      kind: aruba_aoscx
+      startup-config: configs/switch_2.cfg
+      mgmt-ipv4: 172.10.103.12
+    Switch3:
+      kind: aruba_aoscx
+      startup-config: configs/switch_3.cfg
+      mgmt-ipv4: 172.10.103.13
+
+  links:
+    - endpoints: ["Switch1:1/1/2", "Switch2:1/1/2"]
+    - endpoints: ["Switch1:1/1/3", "Switch3:1/1/2"]
+    - endpoints: ["Switch2:1/1/1", "Switch3:1/1/1"]

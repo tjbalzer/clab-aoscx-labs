@@ -1,0 +1,69 @@
+name: aoscxlab
+
+mgmt:
+  network: aoscxlab
+  ipv4-subnet: 172.10.103.0/24
+
+topology:
+  kinds:
+    aruba_aoscx:
+      image: vrnetlab/aruba_arubaos-cx:20240731173624
+    linux:
+      image: ghcr.io/srl-labs/network-multitool
+  nodes:
+    SW1:
+      kind: aruba_aoscx
+      #startup-config: configs/sw1.cfg
+      mgmt-ipv4: 172.10.103.11
+    SW2:
+      kind: aruba_aoscx
+      #startup-config: configs/sw2.cfg
+      mgmt-ipv4: 172.10.103.12
+    SW3:
+      kind: aruba_aoscx
+      #startup-config: configs/sw3.cfg
+      mgmt-ipv4: 172.10.103.13
+    HostA:
+      kind: linux
+      mgmt-ipv4: 172.10.103.51
+      exec:
+        - ip address add 10.11.110.10/24 dev eth1
+        - ip route add 10.0.0.0/8 via 10.11.110.1 dev eth1
+        - ip route add 192.168.0.0/16 via 10.11.110.1 dev eth1
+    HostB:
+      kind: linux
+      mgmt-ipv4: 172.10.103.52
+      exec:
+        - ip address add 10.11.111.10/24 dev eth1
+        - ip route add 10.0.0.0/8 via 10.11.111.1 dev eth1
+        - ip route add 192.168.0.0/16 via 10.11.111.1 dev eth1
+    HostC:
+      kind: linux
+      mgmt-ipv4: 172.10.103.53
+      exec:
+        - ip address add 10.11.119.10/24 dev eth1
+        - ip route add 10.0.0.0/8 via 10.11.119.1 dev eth1
+        - ip route add 192.168.0.0/16 via 10.11.119.1 dev eth1
+    HostD:
+      kind: linux
+      mgmt-ipv4: 172.10.103.54
+      exec:
+        - ip address add 10.12.120.10/24 dev eth1
+        - ip route add 10.0.0.0/8 via 10.12.120.1 dev eth1
+        - ip route add 192.168.0.0/16 via 10.12.120.1 dev eth1
+    SRV-services:
+      kind: linux
+      mgmt-ipv4: 172.10.103.55
+      exec:
+        - ip address add 10.5.50.10/24 dev eth1
+        - ip route add 10.0.0.0/8 via 10.5.50.1 dev eth1
+        - ip route add 192.168.0.0/16 via 10.5.50.1 dev eth1
+
+  links:
+    - endpoints: ["SW1:1/1/1", "SW2:1/1/9"]
+    - endpoints: ["SW1:1/1/2", "SW3:1/1/9"]
+    - endpoints: ["SW1:1/1/9", "SRV-services:eth1"]
+    - endpoints: ["SW2:1/1/1", "HostA:eth1"]
+    - endpoints: ["SW2:1/1/2", "HostB:eth1"]
+    - endpoints: ["SW3:1/1/1", "HostC:eth1"]
+    - endpoints: ["SW3:1/1/2", "HostD:eth1"]

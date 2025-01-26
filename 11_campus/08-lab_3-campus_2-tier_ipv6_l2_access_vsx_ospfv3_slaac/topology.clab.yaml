@@ -1,0 +1,39 @@
+name: aoscxlab
+
+mgmt:
+  network: aoscxlab
+  ipv4-subnet: 172.10.103.0/24
+
+topology:
+  kinds:
+    aruba_aoscx:
+      image: vrnetlab/aruba_arubaos-cx:20240731173624
+    linux:
+      image: ghcr.io/srl-labs/network-multitool
+  nodes:
+    ColCore-1:
+      kind: aruba_aoscx
+      #startup-config: configs/colcore_1.cfg
+      mgmt-ipv4: 172.10.103.11
+    ColCore-2:
+      kind: aruba_aoscx
+      #startup-config: configs/colcore_2.cfg
+      mgmt-ipv4: 172.10.103.12
+    Access:
+      kind: aruba_aoscx
+      #startup-config: configs/access.cfg
+      mgmt-ipv4: 172.10.103.13
+    IPv6Client:
+      kind: linux
+      mgmt-ipv4: 172.10.103.51
+      #exec:
+      #  - ip address add 10.10.100.1/24 dev eth1
+      #  - ip route add 10.10.0.0/16 via 10.10.100.254 dev eth1
+
+  links:
+    - endpoints: ["ColCore-1:1/1/1", "Access:1/1/8"]
+    - endpoints: ["ColCore-1:1/1/8", "ColCore-2:1/1/8"]
+    - endpoints: ["ColCore-1:1/1/9", "ColCore-2:1/1/9"]
+    - endpoints: ["ColCore-2:1/1/1", "Access:1/1/9"]
+    - endpoints: ["Access:1/1/1", "IPv6Client:eth1"]
+
