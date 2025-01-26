@@ -1,11 +1,11 @@
 # Lab Guide: VRF Lab 1 - Static IVRL
-> [!INFO]
+> [!NOTE]
 > This lab is based on the AOS-CX Switch Simulator Labs and was converted to be used with [containerlab](https://github.com/srl-labs/containerlab).
 
 > [!IMPORTANT]
 > This guide assumes that the AOS-CX Switch Simulator is available as a docker container. You can use [vrnetlab](https://github.com/hellt/vrnetlab) to accomplish this.
 
->[!INFO]
+>[!NOTE]
 > This description is based on the AOS-CX Switch Simulator Lab Guide [VRF Part 1](https://community.arubanetworks.com/HigherLogic/System/DownloadDocumentFile.ashx?DocumentFileKey=39d1602b-f477-4eb1-87ed-19276d7a539c) and includes all necessary changes to use the lab with [containerlab](https://github.com/srl-labs/containerlab).
 
 ## Lab Objective
