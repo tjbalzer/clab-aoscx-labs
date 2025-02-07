@@ -57,8 +57,6 @@ Switch[B-D](config)#
 On **Switch B** bring up ```interface 1/1/2``` and ```interface 1/1/8```:
 
 ```
-hostname SwitchB
-!
 interface 1/1/2
   no shutdown
 interface 1/1/8
@@ -69,8 +67,6 @@ Leave configuration mode by pressing ```Ctrl-z```.
 On **Switch C** bring up ```interface 1/1/2```:
 
 ```
-hostname SwitchC
-!
 interface 1/1/2
   no shutdown
 ```
@@ -79,8 +75,6 @@ Leave configuration mode by pressing ```Ctrl-z```.
 On **Switch D** bring up ```interface 1/1/8```:
 
 ```
-hostname SwitchD
-!
 interface 1/1/8
   no shutdown
 ```
@@ -313,7 +307,7 @@ If you face issues during your lab, you can verify your configuration with the c
 
 If configs are the same, try powering off/powering on the switches to reboot them.
 
-**Switch B**
+### Switch B
 
 ```
 hostname SwitchB
@@ -359,7 +353,7 @@ interface vlan 10
 !
 https-server vrf mgmt
 ```
-**SwitchC**
+### SwitchC
 ```
 hostname SwitchC
 user admin group administrators password ciphertext AQBapeegWlbYv9gNryXfvhOrpZSO8In9baXxT/nUIMX6gFmiYgAAABQ1ICrqfNTjchQg25wkiEKulStdZuw/a5/czzq/VJNHg4k5QiGkRaTutCJqT1TVvr8UxG6QeL7dLX4UthY8x4zaTONxO269O4ZJycRp+/GVREWYwDA+8Qjz0cCoVBTIQesI
@@ -402,7 +396,7 @@ ip route 0.0.0.0/0 192.168.4.1
 !
 https-server vrf mgmt
 ```
-**SwitchD**
+### SwitchD
 ```
 hostname SwitchD
 user admin group administrators password ciphertext AQBapcH3ftPvMuGOFbs1bVLJy1noTJChj9tMl4Xoa38eIHkqYgAAAAv82T4gMUYruxY+vvH8ttXZ6HscIFA2zNMC1xogu5gEhaBOsqi5/npzqy8KZe51v4EFD5MKUyFvY8JHOMTR16jQwSk7hz1u/bXMGAXtC9Co0b8n5VfGToy/bywY1H8e6OUZ
