@@ -1,6 +1,6 @@
 # Lab Guide: VRF Lab 1 - Static IVRL
 > [!NOTE]
-> This lab is based on the AOS-CX Switch Simulator Labs and was converted to be used with [containerlab](https://github.com/srl-labs/containerlab).
+> This lab is based on the AOS-CX Switch Simulator Labs. A ```topology.clab.yaml``` file was added to use the lab with [containerlab](https://github.com/srl-labs/containerlab). 
 
 > [!IMPORTANT]
 > This guide assumes that the AOS-CX Switch Simulator is available as a docker container. You can use [vrnetlab](https://github.com/hellt/vrnetlab) to accomplish this.
