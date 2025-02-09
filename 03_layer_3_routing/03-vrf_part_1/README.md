@@ -28,16 +28,21 @@ The minimum required AOS-CX Switch Simulator version for this lab is 10.5. It is
 
 ## Lab Network Layout
 
+<a name="network-layout"></a>
 ![Lab Topology](./resources/lab-network-layout.png)
+_Figure 1: VRF Lab Topology_
 
 ## Lab Tasks
 
 ### Task 1: Lab Setup
-
+For this lab refer to [Figure 1](#network-layout) for topology setup.
 - Deploy the containerlab topology file: ```sudo containerlab deploy -t topology.clab.yaml```
   - All the connections between nodes are already set-up
   - Check that sufficient numbers of CPUs and RAM is available for three AOS-CX nodes (at least 1 vCPU and 2048 MB per node)
-- Open each switch console and log in with user “admin”, password "admin"
+  - Ensure that the environment variable ```AOS_CX_VERSION``` is set to a value that matches the image version (default is ```latest```)
+    - If ```AOS_CX_VERSION``` is not set, image ```vrnetlab/aruba_arubaos-cx:latest``` will be deployed
+    - If ```AOS_CX_VERSION=20241115202521```, image ```vrnetlab/aruba_arubaos-cx:20241115202521``` will be deployed
+- Open SSH session to each switch and log in with user 'admin' and password 'admin'.
 - Enter configuration mode from switch prompt
 ```
 SW1# configure terminal

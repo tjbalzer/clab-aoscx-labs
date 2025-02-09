@@ -80,7 +80,9 @@ blocks redundant links to prune the network into a loop free tree.
 
 ## Lab Network Layout
 
+<a name="network-layout"></a>
 ![Lab Topology](./resources/lab-network-layout.png)
+_Figure 1: MSTP Lab Topology_
 
 ## Lab Tasks
 
@@ -89,10 +91,13 @@ blocks redundant links to prune the network into a loop free tree.
 MAC addressing and forwarding states will vary between labs and are presented as examples for illustration along with the
 interface forwarding states..
 
-For this lab refer to the lab network layout for topology.
+For this lab refer to [Figure 1](#network-layout) for topology.
 - Deploy the containerlab topology file: ```sudo containerlab deploy -t topology.clab.yaml```
   - All the connections between nodes are already set-up
   - Check that sufficient numbers of CPUs and RAM is available for three AOS-CX nodes (at least 1 vCPU and 2048 MB per node)
+  - Ensure that the environment variable ```AOS_CX_VERSION``` is set to a value that matches the image version (default is ```latest```)
+    - If ```AOS_CX_VERSION``` is not set, image ```vrnetlab/aruba_arubaos-cx:latest``` will be deployed
+    - If ```AOS_CX_VERSION=20241115202521```, image ```vrnetlab/aruba_arubaos-cx:20241115202521``` will be deployed
 - Open SSH session to switch A, B, C and log in with user “admin”, password "admin"
 - Enter configuration mode from switch prompt
 ```
