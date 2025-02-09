@@ -35,7 +35,7 @@ _Figure 1: MSTP Lab Topology_
 ## Lab Tasks
 
 ### Task 1: Lab Setup
-For this lab refer to [Figure 1](lab-network-layout) for topology setup. Open each switch console and log in with user 'admin' and password 'admin'.
+For this lab refer to [Figure 1](#network-layout) for topology setup. Open each switch console and log in with user 'admin' and password 'admin'.
 
 Note: Switch X will be configured later in the lab. The Virtual PC (VPC-C) is not required to be configured and just shown to
 represent an access port.
@@ -303,7 +303,8 @@ best path cost is 40,000 (_20,000 (Switch D interface 1/1/2) + 20,000 (Switch B 
 summation of associated link cost.
 
 <a name="network-layout"></a>
-![Lab Topology](./resources/mstp-path-cost-switch_d.png)
+<img src="./resources/mstp-path-cost-switch_d.png" width="400">
+
 _Figure 3: MSTP path cost from Switch D_
 
 
