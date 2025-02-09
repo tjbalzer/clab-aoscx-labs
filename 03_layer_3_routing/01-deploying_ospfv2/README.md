@@ -22,6 +22,9 @@ Some OSPFv2 configuration is done in the global configuration context, others in
 The protocol uses Link State Advertisements (LSAs) transmitted by each router to update neighboring routers regarding its interfaces and the routes available through those interfaces. Each routing switch in an area also maintains a link -state database (LSDB) that describes the area topology. (All routers in a given OSPF area have identical LSDBs.) The routing switches used to connect areas to each other flood summary link LSAs and external link LSAs to neighboring OSPF areas to update them regarding available routes. Through this means, each OSPF router determines the shortest path between itself and a desired destination router in the same OSPF domain (Autonomous System (AS)).
 
 ## Lab Network Layout
+<a name="network-layout"></a>
+![Lab Topology](./resources/lab-network-layout.png)
+_Figure 1: Lab Topology and Addresses_
 
 ## Lab Tasks
 To complete the lab, you should follow the following steps:
@@ -38,8 +41,14 @@ Notes:
 
 ### Task 1 – Lab Setup
 
-- Start all the devices, including host and client
-- Open each switch console and log in with user “admin” and no password
+For this lab refer to [Figure 1](#network-layout) for topology setup.
+- Deploy the containerlab topology file: ```sudo containerlab deploy -t topology.clab.yaml```
+  - All the connections between nodes are already set-up
+  - Check that sufficient numbers of CPUs and RAM is available for three AOS-CX nodes (at least 1 vCPU and 2048 MB per node)
+  - Ensure that the environment variable ```AOS_CX_VERSION``` is set to a value that matches the image version (default is ```latest```)
+    - If ```AOS_CX_VERSION``` is not set, image ```vrnetlab/aruba_arubaos-cx:latest``` will be deployed
+    - If ```AOS_CX_VERSION=20241115202521```, image ```vrnetlab/aruba_arubaos-cx:20241115202521``` will be deployed
+- Open SSH session to each switch and log in with user 'admin' and password 'admin'.
 - Change all hostnames as shown in the topology (Use ```SwitchA```, ```SwitchB```, etc. to replace ```<hostname>```:
 ```
 hostname <hostname>
