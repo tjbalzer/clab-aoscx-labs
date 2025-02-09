@@ -1,6 +1,6 @@
 # Lab Guide: Layer 2 Access Switch Management & Connectivity
 > [!NOTE]
-> This lab is based on the AOS-CX Switch Simulator Labs and was converted to be used with [containerlab](https://github.com/srl-labs/containerlab).
+> This lab is based on the AOS-CX Switch Simulator Labs. A ```topology.clab.yaml``` file was added to use the lab with [containerlab](https://github.com/srl-labs/containerlab). 
 
 > [!IMPORTANT]
 > This guide assumes that the AOS-CX Switch Simulator is available as a docker container. You can use [vrnetlab](https://github.com/hellt/vrnetlab) to accomplish this.
@@ -304,8 +304,6 @@ rtt min/avg/max/mdev = 4.295/5.639/6.955/1.112 ms
 ## Appendix: Complete Configurations
 
 If you face issues during your lab, you can verify your configuration with the configuration extract listed in this section.
-
-If configs are the same, try powering off/powering on the switches to reboot them.
 
 ### Switch B
 
