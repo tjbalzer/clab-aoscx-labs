@@ -140,7 +140,7 @@ Command description:
 - ```spanning-tree instance 1 priority 0``` => MST 1 Root
 - ```spanning-tree instance 2 priority 1``` => MST 2 Secondary Root
 
-On Switch B add VLAN 10-11 and 20-21. Configure STP making Switch B Root for VLAN 20-11 instance 2 and Secondary Root for 10-11 instance 1,then trunk all VLANs for interface 1/1/1 to 1/1/3:
+On Switch B add VLAN 10-11 and 20-21. Configure STP making Switch B Root for VLAN 20-21 instance 2 and Secondary Root for 10-11 instance 1,then trunk all VLANs for interface 1/1/1 to 1/1/3:
 
 ```
 SwitchB# configure terminal
@@ -313,7 +313,6 @@ summation of associated link cost.
 
 _Figure 3: MSTP path cost from Switch D_
 
-
 Check the port roles and cost from Switch D perspective:
 
 ```
@@ -379,7 +378,7 @@ Last topology change occurred : 15 seconds ago
 As shown above by manipulating the path cost the behavior of the ports roles were changed.
 
 > [!NOTE] Default cost is calculated based on port link speed for the Aruba CX OVA the ports simulate 1GbEs and are set to
-20,000. Please refer to Layer 2 birding guide to get the path cost for various speed ports.
+20,000. Please refer to Layer 2 bridging guide to get the path cost for various speed ports.
 
 ### Task 5: MSTP Timers and Tuning
 
@@ -387,16 +386,16 @@ Detailed information around STP timers is beyond the scope of this lab guide. Ho
 timers to tune and improve convergence time. However, use of such parameters depends on design and architecture of a
 network as it can impact switch resources under certain conditions.
 
-- spanning-tree forward-delay is the time spent in the listening and learning state. This time is equal to 15
+- ```spanning-tree forward-delay``` is the time spent in the listening and learning state. This time is equal to 15
 seconds by default, and can be tuned between 4 and 30 seconds
-- spanning-tree hello-time is the time between each Bridge Protocol Data Unit (BPDU) that are sent on a port.
+- ```spanning-tree hello-time``` is the time between each Bridge Protocol Data Unit (BPDU) that are sent on a port.
 The default is 2 seconds and can be tuned between 2 and 10 sec.
-- spanning-tree max-age is the interval, specified in the BPDU, that BPDU data remains valid after its reception.
+- ```spanning-tree max-age``` is the interval, specified in the BPDU, that BPDU data remains valid after its reception.
 The bridge re-computes the spanning tree topology if it does not receive a new BPDU before max-age expiry.
 Default is 20 Seconds and can be changed between 6 and 20 Seconds.
 
 The above three parameters are mentioned for completeness. For this lab guide we will explore:
-- spanning-tree port-type admin-edge which is primarily designed to optimize ports that are connected to end
+- ```spanning-tree port-type admin-edge``` which is primarily designed to optimize ports that are connected to end
 points to allow the ports to transition directly to forwarding, circumventing the learning and listening phase.
 
 On Switch C configure the following:
@@ -435,7 +434,7 @@ Topology change flag          : True
 Number of topology changes    : 1
 Last topology change occurred : 2149 seconds ago
 ```
-In the above we can see the newly configured switch port act like a regular P2P port and we know that it will go into a
+In the above output we can see the newly configured switch port act like a regular P2P port and we know that it will go into a
 learning and listening phase which is undesirable for ports connected to endpoints.
 
 On Switch C configure the following:
@@ -552,6 +551,8 @@ Last topology change occurred : 73 seconds ago
 ```
 Below observe the state of the interface 1/1/8 on Switch D is down as expected, due to Bpdu-Error:
 ```
+SwitchD# show int 1/1/8
+
 Interface 1/1/8 is down 
  Admin state is up
  ...
