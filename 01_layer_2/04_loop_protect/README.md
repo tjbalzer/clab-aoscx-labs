@@ -147,6 +147,8 @@ Interface 1/1/3
 ```
 Start packet capture on Switch1 interface 1/1/2 (connected to Switch2):
 
+>[!NOTE] This lab guide assumes that you are using Visual Studio Code together with the [vscode-containerlab extension](https://github.com/srl-labs/vscode-containerlab), available on [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=srl-labs.vscode-containerlab) and [Open VSX Registry](https://open-vsx.org/extension/srl-labs/vscode-containerlab).
+
 <a name="start-packet-capture"></a>
 ![Lab Topology](./resources/start-packet-capture.png)
 _Figure 2: Start Packet Capture_
