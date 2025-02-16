@@ -13,15 +13,15 @@ topology:
   nodes:
     Switch1:
       kind: aruba_aoscx
-      startup-config: configs/switch_1.cfg
+      #startup-config: configs/switch_1.cfg
       mgmt-ipv4: 172.10.103.11
     Switch2:
       kind: aruba_aoscx
-      startup-config: configs/switch_2.cfg
+      #startup-config: configs/switch_2.cfg
       mgmt-ipv4: 172.10.103.12
     Switch3:
       kind: aruba_aoscx
-      startup-config: configs/switch_3.cfg
+      #startup-config: configs/switch_3.cfg
       mgmt-ipv4: 172.10.103.13
 
   links:
