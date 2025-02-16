@@ -563,7 +563,7 @@ from Switch X. Timeouts can be configured to re-enable the port, not covered in 
 
 ```
 2025-02-16T21:32:46.525407+0000 hpe-pvstd[9239] <WARN> Event|5004|LOG_WARN|AMM|1/1|Port 1/1/8 disabled - BPDU received on protected port on VLAN 10.```
-
+```
 Below port 1/1/8 is disabled due to “Bpdu-Error”:
 ```
 SwitchD# show spanning-tree vlan 10
@@ -653,6 +653,7 @@ stability.
 > [!NOTE]
 > Prior to Root Inconsistent the protected ports will go into Designated Blocking, and may also be observed depending
 when show commands will be executed.
+
 ```
 SwitchA# show spanning-tree vlan 10
 
@@ -678,7 +679,6 @@ Port         Role           State      Cost           Priority   Type       BPDU
 Number of topology changes    : 1364
 Last topology change occurred : 0 seconds ago
 ```
-
 ```
 SwitchB# show spanning-tree vlan 10
 
