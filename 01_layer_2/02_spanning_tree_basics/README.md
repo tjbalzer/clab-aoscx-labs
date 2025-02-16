@@ -6,7 +6,7 @@
 > This guide assumes that the AOS-CX Switch Simulator is available as a docker container. You can use [vrnetlab](https://github.com/hellt/vrnetlab) to accomplish this.
 
 >[!NOTE]
-> This description is based on the AOS-CX Switch Simulator Lab Guide [Deploying basic STP](https://community.arubanetworks.com/HigherLogic/System/DownloadDocumentFile.ashx?DocumentFileKey=eff7fe89-cf47-46ad-a853-980c80768b66) and includes all necessary changes to use the lab with [containerlab](https://github.com/srl-labs/containerlab).
+> This description is based on the AOS-CX Switch Simulator Lab Guide [Deploying Basic STP](https://community.arubanetworks.com/HigherLogic/System/DownloadDocumentFile.ashx?DocumentFileKey=eff7fe89-cf47-46ad-a853-980c80768b66) and includes all necessary changes to use the lab with [containerlab](https://github.com/srl-labs/containerlab).
 
 ## Lab Objective
 
