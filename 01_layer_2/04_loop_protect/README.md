@@ -5,7 +5,7 @@
 > [!IMPORTANT]
 > This guide assumes that the AOS-CX Switch Simulator is available as a docker container. You can use [vrnetlab](https://github.com/hellt/vrnetlab) to accomplish this.
 
->[!NOTE]
+> [!NOTE]
 > This description is based on the AOS-CX Switch Simulator Lab Guide [Loop Protect](https://community.arubanetworks.com/HigherLogic/System/DownloadDocumentFile.ashx?DocumentFileKey=715a0eb9-e240-4016-8530-e06cda75a7b1) and includes all necessary changes to use the lab with [containerlab](https://github.com/srl-labs/containerlab).
 
 ## Lab Objective
@@ -147,7 +147,8 @@ Interface 1/1/3
 ```
 Start packet capture on Switch1 interface 1/1/2 (connected to Switch2):
 
->[!NOTE] This lab guide assumes that you are using Visual Studio Code together with the [vscode-containerlab extension](https://github.com/srl-labs/vscode-containerlab), available on [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=srl-labs.vscode-containerlab) and [Open VSX Registry](https://open-vsx.org/extension/srl-labs/vscode-containerlab).
+> [!NOTE] 
+> This lab guide assumes that you are using Visual Studio Code together with the [vscode-containerlab extension](https://github.com/srl-labs/vscode-containerlab), available on [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=srl-labs.vscode-containerlab) and [Open VSX Registry](https://open-vsx.org/extension/srl-labs/vscode-containerlab).
 
 <a name="start-packet-capture"></a>
 ![Lab Topology](./resources/start-packet-capture.png)
