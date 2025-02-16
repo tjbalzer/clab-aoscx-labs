@@ -46,7 +46,6 @@ For this lab refer to [Figure 1](#network-layout) for topology setup.
 
 Note: Switch X will be configured later in the lab. The Virtual PC (VPC-C) is not required to be configured and just shown to
 represent an access port.
-- Change all hostnames as shown in the topology:
 
 On Switch A and B bring up required ports:
 ```
