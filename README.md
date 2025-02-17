@@ -25,9 +25,9 @@
 ### Layer 3 Routing
 | Lab | Source | Clab ready | Doc ready |
 |-----|--------|------------|-----------|
-| [Deploying OSPFv2]() | [Source](https://community.arubanetworks.com/community-home/digestviewer/viewthread?GroupId=565&MessageKey=d8cfba5c-48f3-40ab-88d2-31e0f9bb4885&CommunityKey=aa40c287-728e-4827-b062-5eff4ed6410b&tab=digestviewer&ReturnUrl=%2fcommunity-home%2fdigestviewer%3fcommunitykey%3daa40c287-728e-4827-b062-5eff4ed6410b%26tab%3ddigestviewer) | :white_check_mark: | :x: |
+| [Deploying OSPFv2]() | [Source](https://community.arubanetworks.com/community-home/digestviewer/viewthread?GroupId=565&MessageKey=d8cfba5c-48f3-40ab-88d2-31e0f9bb4885&CommunityKey=aa40c287-728e-4827-b062-5eff4ed6410b&tab=digestviewer&ReturnUrl=%2fcommunity-home%2fdigestviewer%3fcommunitykey%3daa40c287-728e-4827-b062-5eff4ed6410b%26tab%3ddigestviewer) | :white_check_mark: | :white_check_mark: |
 | [Basic BGP]() | [Source](https://community.arubanetworks.com/community-home/digestviewer/viewthread?GroupId=565&MessageKey=886cafed-4f86-40d5-8624-b78f1fb1513c&CommunityKey=aa40c287-728e-4827-b062-5eff4ed6410b&tab=digestviewer&ReturnUrl=%2fcommunity-home%2fdigestviewer%3fcommunitykey%3daa40c287-728e-4827-b062-5eff4ed6410b%26tab%3ddigestviewer) | :white_check_mark: | :x: |
-| [VRF Part 1]() | [Source](https://community.arubanetworks.com/community-home/digestviewer/viewthread?GroupId=565&MessageKey=1ddc020f-c28b-4c68-b241-39d4e8c3a97f&CommunityKey=aa40c287-728e-4827-b062-5eff4ed6410b&tab=digestviewer&ReturnUrl=%2fcommunity-home%2fdigestviewer%3fcommunitykey%3daa40c287-728e-4827-b062-5eff4ed6410b%26tab%3ddigestviewer) | :white_check_mark: | :x: |
+| [VRF Part 1]() | [Source](https://community.arubanetworks.com/community-home/digestviewer/viewthread?GroupId=565&MessageKey=1ddc020f-c28b-4c68-b241-39d4e8c3a97f&CommunityKey=aa40c287-728e-4827-b062-5eff4ed6410b&tab=digestviewer&ReturnUrl=%2fcommunity-home%2fdigestviewer%3fcommunitykey%3daa40c287-728e-4827-b062-5eff4ed6410b%26tab%3ddigestviewer) | :white_check_mark: | :white_check_mark: |
 
 ### Campus Series
 | Lab | Source | Clab ready | Doc ready |
