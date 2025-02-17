@@ -1,8 +1,8 @@
-name: aoscxlab
+name: aoscx02_02
 
 mgmt:
   network: aoscxlab
-  ipv4-subnet: 172.10.103.0/24
+  ipv4-subnet: auto
 
 topology:
   kinds:
@@ -14,26 +14,21 @@ topology:
     SW1:
       kind: aruba_aoscx
       startup-config: configs/sw1.cfg
-      mgmt-ipv4: 172.10.103.11
       group: spine
     SW2:
       kind: aruba_aoscx
       startup-config: configs/sw2.cfg
-      mgmt-ipv4: 172.10.103.12
       group: spine
     SW3:
       kind: aruba_aoscx
       startup-config: configs/sw3.cfg
-      mgmt-ipv4: 172.10.103.13
       group: leaf
     SW4:
       kind: aruba_aoscx
       startup-config: configs/sw4.cfg
-      mgmt-ipv4: 172.10.103.14
       group: leaf
     HostA:
       kind: linux
-      mgmt-ipv4: 172.10.103.51
       exec:
         - ip address add 10.10.100.11/24 dev eth1
         - ip route add 10.10.0.0/16 via 10.10.100.1 dev eth1
@@ -43,7 +38,6 @@ topology:
       group: server
     HostB:
       kind: linux
-      mgmt-ipv4: 172.10.103.52
       exec:
         - ip address add 10.10.101.11/24 dev eth1
         - ip route add 10.10.0.0/16 via 10.10.101.1 dev eth1

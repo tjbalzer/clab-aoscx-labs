@@ -1,8 +1,8 @@
-name: aoscxlab
+name: aoscx11_07
 
 mgmt:
   network: aoscxlab
-  ipv4-subnet: 172.10.103.0/24
+  ipv4-subnet: auto
 
 topology:
   kinds:
@@ -14,18 +14,14 @@ topology:
     ColCore-1:
       kind: aruba_aoscx
       #startup-config: configs/colcore_1.cfg
-      mgmt-ipv4: 172.10.103.11
     ColCore-2:
       kind: aruba_aoscx
       #startup-config: configs/colcore_2.cfg
-      mgmt-ipv4: 172.10.103.12
     RAccess:
       kind: aruba_aoscx
       #startup-config: configs/raccess.cfg
-      mgmt-ipv4: 172.10.103.13
     IPv6Client:
       kind: linux
-      mgmt-ipv4: 172.10.103.51
       #exec:
       #  - ip address add 10.10.100.1/24 dev eth1
       #  - ip route add 10.10.0.0/16 via 10.10.100.254 dev eth1

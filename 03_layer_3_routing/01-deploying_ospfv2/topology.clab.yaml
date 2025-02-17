@@ -1,8 +1,8 @@
-name: aoscxlab
+name: aoscx03_01
 
 mgmt:
   network: aoscxlab
-  ipv4-subnet: 172.10.103.0/24
+  ipv4-subnet: auto
 
 topology:
   kinds:
@@ -13,30 +13,24 @@ topology:
   nodes:
     SwitchA:
       kind: aruba_aoscx
-      startup-config: configs/switch_a.cfg
-      mgmt-ipv4: 172.10.103.11
+      #startup-config: configs/switch_a.cfg
     SwitchB:
       kind: aruba_aoscx
-      startup-config: configs/switch_b.cfg
-      mgmt-ipv4: 172.10.103.12
+      #startup-config: configs/switch_b.cfg
     SwitchC:
       kind: aruba_aoscx
-      startup-config: configs/switch_c.cfg
-      mgmt-ipv4: 172.10.103.13
+      #startup-config: configs/switch_c.cfg
     SwitchD:
       kind: aruba_aoscx
-      startup-config: configs/switch_d.cfg
-      mgmt-ipv4: 172.10.103.14
+      #startup-config: configs/switch_d.cfg
     HostA:
       kind: linux
-      mgmt-ipv4: 172.10.103.51
       exec:
         - ip address add 8.1.1.1/24 dev eth1
         - ip route add 0.0.0.0/4 via 8.1.1.254 dev eth1
         - ip route add 100.0.0.0/5 via 8.1.1.254 dev eth1
     HostB:
       kind: linux
-      mgmt-ipv4: 172.10.103.52
       exec:
         - ip address add 7.1.1.1/24 dev eth1
         - ip route add 0.0.0.0/4 via 7.1.1.254 dev eth1
