@@ -1,4 +1,4 @@
-# Lab Guide: MSTP Fundamentals
+# Lab Guide: Loop Protect
 > [!NOTE]
 > This lab is based on the AOS-CX Switch Simulator Labs. A ```topology.clab.yaml``` file was added to use the lab with [containerlab](https://github.com/srl-labs/containerlab). 
 
