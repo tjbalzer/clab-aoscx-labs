@@ -36,7 +36,7 @@ _Figure 1: MSTP Lab Topology_
 
 ### Task 1: Lab Setup
 For this lab refer to [Figure 1](#network-layout) for topology setup.
-- Deploy the containerlab topology file: ```sudo containerlab deploy -t topology.clab.yaml```
+- Deploy the containerlab topology file: ```sudo containerlab deploy -t topology.clab.yaml``` (or use the [containerlab extension](https://containerlab.dev/manual/vsc-extension/) for Visual Studio Code)
   - All the connections between nodes are already set-up
   - Check that sufficient numbers of CPUs and RAM is available for three AOS-CX nodes (at least 1 vCPU and 2048 MB per node)
   - Ensure that the environment variable ```AOS_CX_VERSION``` is set to a value that matches the image version (default is ```latest```)
