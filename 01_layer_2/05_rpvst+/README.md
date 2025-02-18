@@ -18,7 +18,7 @@ Protocol for Aruba CX switches
 For further details on RPVST please refer to the latest Aruba documentation located on https://asp.arubanetworks.com/
 
 ## Lab Overview
-This lab set up is as shown in [Figure 1](#network-layout) and [Figure 2](#rpvst-topology).This will allow the reader to observe the behavior of RPVST
+This lab set up is as shown in [Figure 1](#network-layout) and [Figure 2](#rpvst-topology).This will allow the reader to observe the behavior of RPVST.
 This lab covers configuration of the following:
 
 - RPVST and associated VLANs
