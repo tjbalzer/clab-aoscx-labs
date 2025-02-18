@@ -18,7 +18,7 @@ mechanism of dynamically propagating VLAN information from a source switch to ot
 For further details on MVRP please refer to the latest Aruba documentation located on https://asp.arubanetworks.com/
 
 ## Lab Overview
-This lab set up is as shown in [Figure 1](#network-layout) and [Figure 2](#mvrp-topology).This will allow you to observe the propagation of dynamic VLANs.
+This lab set up is as shown in [Figure 1](#network-layout-part_i) and [Figure 2](#network-layout-part_ii).This will allow you to observe the propagation of dynamic VLANs.
 
 This lab is split into two parts:
 
@@ -31,14 +31,14 @@ Part II we see MVRP in an MSTP environment and how it works in conjunction with 
 
 ## Lab Network Layout
 
-<a name="network-layout-part_I"></a>
+<a name="network-layout-part_i"></a>
 ![Lab Topology](./resources/lab-network-layout-part_I.png)
 _Figure 1: Part I Lab topology Only Use Switch A, C and D_
 
 ## Part I: Lab Tasks
 
 ### Task 1: Lab Setup
-For this lab refer to [Figure 1](#network-layout) for topology setup.
+For this lab refer to [Figure 1](#network-layout-part_1) for topology setup.
 - Deploy the containerlab topology file: ```sudo containerlab deploy -t topology.clab.yaml``` (or use the [containerlab extension](https://containerlab.dev/manual/vsc-extension/) for Visual Studio Code.
   - All the connections between nodes are already set-up
   - Check that sufficient numbers of CPUs and RAM is available for three AOS-CX nodes (at least 1 vCPU and 2048 MB per node)
@@ -65,7 +65,7 @@ Leave configuration mode by pressing ```Ctrl-z```.
 
 Validate LLDP neighbors appear as expected on each switch. Here we show Switch A output only.
 
-If all switches have been configured as shown in [Figure 1](#lab-network-layout) you should see Switch C and D through Switch A below using LLDP.
+If all switches have been configured as shown in [Figure 1](#lab-network-layout-part_i) you should see Switch C and D through Switch A below using LLDP.
 
 ```
 SwitchA# show lldp neighbor-info
@@ -220,7 +220,7 @@ VLAN  Name                              Status  Reason                  Type    
 ```
 ## Part II: Lab Tasks
 
-<a name="network-layout-part_II"></a>
+<a name="network-layout-part_ii"></a>
 ![Part II Lab Topology](./resources/lab-network-layout-part_II.png)
 _Figure 2: Part II Lab topology_
 
@@ -241,7 +241,7 @@ _Figure 3: MSTI Topology_
 ### Task 4: Part II Lab Setup
 
 First clear some of the VLAN Configurations, and enable all the relevant ports, as well as add Switch D as shown in
-[Figure 2](#network-layout-part_II).
+[Figure 2](#network-layout-part_ii).
 
 A prerequisite to follow Part II lab steps below, the assumption is Part I lab has been completed already.
 
