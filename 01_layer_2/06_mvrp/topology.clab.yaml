@@ -13,18 +13,18 @@ topology:
   nodes:
     SwitchA:
       kind: aruba_aoscx
-      startup-config: configs/switch_a_part1.cfg
+      #startup-config: configs/switch_a_part1.cfg
       ##startup-config: configs/switch_a_part2.cfg
     SwitchB:
       kind: aruba_aoscx
       ##startup-config: configs/switch_b_part2.cfg
     SwitchC:
       kind: aruba_aoscx
-      startup-config: configs/switch_c_part1.cfg
+      #startup-config: configs/switch_c_part1.cfg
       ##startup-config: configs/switch_b_part2.cfg
     SwitchD:
       kind: aruba_aoscx
-      startup-config: configs/switch_d_part1.cfg
+      #startup-config: configs/switch_d_part1.cfg
       ##startup-config: configs/switch_b_part2.cfg
 
   links:
