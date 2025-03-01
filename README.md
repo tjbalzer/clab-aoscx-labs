@@ -34,6 +34,8 @@
 |-----|--------|------------|-----------|
 | [Static VXLAN](./06_overlay/01-static_vxlan/) | [Source](https://community.arubanetworks.com/community-home/digestviewer/viewthread?GroupId=565&MessageKey=d44ae179-8ffa-4bb7-905c-3b2c812bd1b7&CommunityKey=aa40c287-728e-4827-b062-5eff4ed6410b&tab=digestviewer&ReturnUrl=%2fcommunity-home%2fdigestviewer%3fcommunitykey%3daa40c287-728e-4827-b062-5eff4ed6410b%26tab%3ddigestviewer) | :white_check_mark: | :x: |
 | [VXLAN EVPN](./06_overlay/02_vxlan_evpn/) | [Source](https://community.arubanetworks.com/community-home/digestviewer/viewthread?GroupId=565&MessageKey=e6629aaf-c2e2-4540-a13c-e9f0b4d158eb&CommunityKey=aa40c287-728e-4827-b062-5eff4ed6410b&tab=digestviewer&ReturnUrl=%2fcommunity-home%2fdigestviewer%3fcommunitykey%3daa40c287-728e-4827-b062-5eff4ed6410b%26tab%3ddigestviewer) | :white_check_mark: | :x: |
+| [XLAN Centralized L3 Gateway](./06_overlay/03_vxlan_centralized_l3_gateway/) | [Source](https://community.arubanetworks.com/community-home/digestviewer/viewthread?GroupId=565&MessageKey=03bd3207-75e0-43f0-b735-3a45b79daecb&CommunityKey=aa40c287-728e-4827-b062-5eff4ed6410b&tab=digestviewer&ReturnUrl=%2fcommunity-home%2fdigestviewer%3fcommunitykey%3daa40c287-728e-4827-b062-5eff4ed6410b%26tab%3ddigestviewer) | :white_check_mark: | :x: |
+
 
 ### Campus Series
 | Lab | Source | Clab ready | Doc ready |
@@ -86,7 +88,6 @@
 ### Overlay
 | Lab | Source | Clab ready | Doc ready |
 |-----|--------|------------|-----------|
-| VXLAN Centralized L3 Gateway | [Source](https://community.arubanetworks.com/community-home/digestviewer/viewthread?GroupId=565&MessageKey=03bd3207-75e0-43f0-b735-3a45b79daecb&CommunityKey=aa40c287-728e-4827-b062-5eff4ed6410b&tab=digestviewer&ReturnUrl=%2fcommunity-home%2fdigestviewer%3fcommunitykey%3daa40c287-728e-4827-b062-5eff4ed6410b%26tab%3ddigestviewer) | :x: | :x: |
 | VXLAN EVPN Troubleshooting | [Source](https://community.arubanetworks.com/community-home/digestviewer/viewthread?GroupId=565&MessageKey=efcae282-dccb-4fb8-a10f-16e572cefb1c&CommunityKey=aa40c287-728e-4827-b062-5eff4ed6410b&tab=digestviewer&ReturnUrl=%2fcommunity-home%2fdigestviewer%3fcommunitykey%3daa40c287-728e-4827-b062-5eff4ed6410b%26tab%3ddigestviewer) | :x: | :x: |
 | VNBT - Virtual Network-Based Tunneling | [Source](https://community.arubanetworks.com/community-home/digestviewer/viewthread?GroupId=565&MessageKey=6cc2ca5b-0e76-47a4-80f9-9dc31399ef3b&CommunityKey=aa40c287-728e-4827-b062-5eff4ed6410b&tab=digestviewer&ReturnUrl=%2fcommunity-home%2fdigestviewer%3fcommunitykey%3daa40c287-728e-4827-b062-5eff4ed6410b%26tab%3ddigestviewer) | :x: | :x: |
 

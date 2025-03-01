@@ -27,18 +27,22 @@ topology:
       kind: linux
       exec:
         - ip address add 10.0.110.1/24 dev eth1
+        - ip route add 10.0.111.0/24 via 10.0.110.254 dev eth1
     Host2:
       kind: linux
       exec:
         - ip address add 10.0.110.2/24 dev eth1
+        - ip route add 10.0.111.0/24 via 10.0.110.254 dev eth1
     Host3:
       kind: linux
       exec:
         - ip address add 10.0.111.1/24 dev eth1
-    Host3:
+        - ip route add 10.0.110.0/24 via 10.0.111.254 dev eth1
+    Host4:
       kind: linux
       exec:
         - ip address add 10.0.111.2/24 dev eth1
+        - ip route add 10.0.110.0/24 via 10.0.111.254 dev eth1
 
   links:
     - endpoints: ["Spine1:1/1/1", "Leaf2:1/1/2"]
