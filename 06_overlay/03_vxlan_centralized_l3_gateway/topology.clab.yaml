@@ -13,16 +13,16 @@ topology:
   nodes:
     Spine1:
       kind: aruba_aoscx
-      startup-config: configs/spine1.cfg
+      #startup-config: configs/spine1.cfg
     Spine2:
       kind: aruba_aoscx
-      startup-config: configs/spine2.cfg
+      #startup-config: configs/spine2.cfg
     Leaf1:
       kind: aruba_aoscx
-      startup-config: configs/leaf1.cfg
+      #startup-config: configs/leaf1.cfg
     Leaf2:
       kind: aruba_aoscx
-      startup-config: configs/leaf2.cfg
+      #startup-config: configs/leaf2.cfg
     Host1:
       kind: linux
       exec:
