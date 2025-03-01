@@ -14,29 +14,23 @@ topology:
     Spine1:
       kind: aruba_aoscx
       #startup-config: configs/spine1.cfg
-      group: superspine
     Spine2:
       kind: aruba_aoscx
       #startup-config: configs/spine2.cfg
-      group: superspine
     Leaf1:
       kind: aruba_aoscx
       #startup-config: configs/leaf1.cfg
-      group: spine
     Leaf2:
       kind: aruba_aoscx
       #startup-config: configs/leaf2.cfg
-      group: spine
     Host1:
       kind: linux
       exec:
         - ip address add 10.0.110.1/24 dev eth1
-      group: server
     Host2:
       kind: linux
       exec:
         - ip address add 10.0.110.2/24 dev eth1
-      group: server
 
   links:
     - endpoints: ["Spine1:1/1/1", "Leaf2:1/1/2"]
