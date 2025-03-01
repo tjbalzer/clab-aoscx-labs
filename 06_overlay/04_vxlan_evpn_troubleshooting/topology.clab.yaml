@@ -1,0 +1,41 @@
+name: aoscx06_02
+
+mgmt:
+  network: aoscxlab
+  ipv4-subnet: auto
+
+topology:
+  kinds:
+    aruba_aoscx:
+      image: vrnetlab/aruba_arubaos-cx:${AOS_CX_VERSION:=latest}
+    linux:
+      image: ghcr.io/srl-labs/network-multitool
+  nodes:
+    Spine1:
+      kind: aruba_aoscx
+      startup-config: configs/spine1.cfg
+    Spine2:
+      kind: aruba_aoscx
+      startup-config: configs/spine2.cfg
+    Leaf1:
+      kind: aruba_aoscx
+      startup-config: configs/leaf1.cfg
+    Leaf2:
+      kind: aruba_aoscx
+      startup-config: configs/leaf2.cfg
+    Host1:
+      kind: linux
+      exec:
+        - ip address add 10.0.110.1/24 dev eth1
+    Host2:
+      kind: linux
+      exec:
+        - ip address add 10.0.110.2/24 dev eth1
+
+  links:
+    - endpoints: ["Spine1:1/1/1", "Leaf2:1/1/2"]
+    - endpoints: ["Spine1:1/1/2", "Leaf1:1/1/2"]
+    - endpoints: ["Spine2:1/1/1", "Leaf2:1/1/3"]
+    - endpoints: ["Spine2:1/1/2", "Leaf1:1/1/3"]
+    - endpoints: ["Leaf1:1/1/1", "Host1:eth1"]
+    - endpoints: ["Leaf2:1/1/1", "Host2:eth1"]
