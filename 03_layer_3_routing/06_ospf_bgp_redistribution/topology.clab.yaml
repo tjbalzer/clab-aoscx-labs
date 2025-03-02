@@ -1,0 +1,40 @@
+name: aoscx03_06
+
+mgmt:
+  network: aoscxlab
+  ipv4-subnet: auto
+
+topology:
+  kinds:
+    aruba_aoscx:
+      image: vrnetlab/aruba_arubaos-cx:${AOS_CX_VERSION:=latest}
+    linux:
+      image: ghcr.io/srl-labs/network-multitool
+  nodes:
+    BGP-CORE:
+      kind: aruba_aoscx
+      startup-config: configs/bgp_core.cfg
+    ASBR-1:
+      kind: aruba_aoscx
+      startup-config: configs/asbr_1.cfg
+    ASBR-2:
+      kind: aruba_aoscx
+      startup-config: configs/asbr_2.cfg
+    OSPF-1:
+      kind: aruba_aoscx
+      startup-config: configs/ospf_1.cfg
+    OSPF-2:
+      kind: aruba_aoscx
+      startup-config: configs/ospf_2.cfg
+
+  links:
+    - endpoints: ["BGP-CORE:1/1/1", "ASBR-1:1/1/1"]
+    - endpoints: ["BGP-CORE:1/1/2", "ASBR-1:1/1/2"]
+    - endpoints: ["BGP-CORE:1/1/3", "ASBR-2:1/1/1"]
+    - endpoints: ["BGP-CORE:1/1/4", "ASBR-2:1/1/2"]
+    - endpoints: ["ASBR-1:1/1/3", "ASBR-2:1/1/3"]
+    - endpoints: ["ASBR-1:1/1/4", "ASBR-2:1/1/4"]
+    - endpoints: ["ASBR-1:1/1/5", "OSPF-1:1/1/1"]
+    - endpoints: ["ASBR-1:1/1/6", "OSPF-2:1/1/1"]
+    - endpoints: ["ASBR-2:1/1/5", "OSPF-1:1/1/2"]
+    - endpoints: ["ASBR-2:1/1/6", "OSPF-2:1/1/2"]
