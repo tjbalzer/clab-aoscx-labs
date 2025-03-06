@@ -1,0 +1,34 @@
+name: aoscx03_07
+
+mgmt:
+  network: aoscxlab
+  ipv4-subnet: auto
+
+topology:
+  kinds:
+    aruba_aoscx:
+      image: vrnetlab/aruba_arubaos-cx:${AOS_CX_VERSION:=latest}
+    linux:
+      image: ghcr.io/srl-labs/network-multitool
+  nodes:
+    SwitchA:
+      kind: aruba_aoscx
+      startup-config: configs/switch_a.cfg
+    SwitchB:
+      kind: aruba_aoscx
+      startup-config: configs/switch_b.cfg # Config end of Task 4 (full OSPF area 1)
+    SwitchC:
+      kind: aruba_aoscx
+      startup-config: configs/switch_c.cfg # Config end of Task 4 (full OSPF area 1)
+    SwitchD:
+      kind: aruba_aoscx
+      startup-config: configs/switch_d.cfg
+    SwitchE:
+      kind: aruba_aoscx
+      startup-config: configs/switch_e.cfg
+
+  links:
+    - endpoints: ["SwitchA:1/1/1", "SwitchB:1/1/1"]
+    - endpoints: ["SwitchB:1/1/2", "SwitchC:1/1/1"]
+    - endpoints: ["SwitchC:1/1/2", "SwitchD:1/1/1"]
+    - endpoints: ["SwitchC:1/1/3", "SwitchE:1/1/1"]
