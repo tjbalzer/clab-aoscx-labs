@@ -13,19 +13,19 @@ topology:
   nodes:
     SwitchA:
       kind: aruba_aoscx
-      startup-config: configs/switch_a.cfg
+      #startup-config: configs/switch_a.cfg
     SwitchB:
       kind: aruba_aoscx
-      startup-config: configs/switch_b.cfg # Config end of Task 4 (full OSPF area 1)
+      #startup-config: configs/switch_b.cfg # Config end of Task 4 (full OSPF area 1)
     SwitchC:
       kind: aruba_aoscx
-      startup-config: configs/switch_c.cfg # Config end of Task 4 (full OSPF area 1)
+      #startup-config: configs/switch_c.cfg # Config end of Task 4 (full OSPF area 1)
     SwitchD:
       kind: aruba_aoscx
-      startup-config: configs/switch_d.cfg
+      #startup-config: configs/switch_d.cfg
     SwitchE:
       kind: aruba_aoscx
-      startup-config: configs/switch_e.cfg
+      #startup-config: configs/switch_e.cfg
 
   links:
     - endpoints: ["SwitchA:1/1/1", "SwitchB:1/1/1"]
