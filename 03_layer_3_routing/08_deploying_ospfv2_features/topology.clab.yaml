@@ -8,8 +8,6 @@ topology:
   kinds:
     aruba_aoscx:
       image: vrnetlab/aruba_arubaos-cx:${AOS_CX_VERSION:=latest}
-    linux:
-      image: ghcr.io/srl-labs/network-multitool
   nodes:
     SwitchA:
       kind: aruba_aoscx
