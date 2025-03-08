@@ -54,7 +54,7 @@ _Figure 1: Lab topology and addresses_
 ## Lab Tasks
 
 ### Task 1: Lab Setup
-For this lab refer to [Figure 1](#network-layout-part_1) for topology an IP address details.
+For this lab refer to [Figure 1](#network-layout) for topology an IP address details.
 
 - Deploy the containerlab topology file: ```sudo containerlab deploy -t topology.clab.yaml``` (or use the [containerlab extension](https://containerlab.dev/manual/vsc-extension/) for Visual Studio Code)
   - All the connections between nodes are already set-up
@@ -211,6 +211,11 @@ rtt min/avg/max/mdev = 2.066/4.842/12.156/3.844 ms
 
 #### SwitchB
 ```
+SwitchB# configure terminal
+SwitchB(config)#
+```
+Copy/Paste the configuration to Switch B:
+```
 router ospf 1
   router-id 192.168.2.2
   area 0.0.0.0
@@ -223,6 +228,11 @@ interface loopback 0
 Leave configuration mode by pressing ```Ctrl-z```.
 
 #### SwitchC
+```
+SwitchC# configure terminal
+SwitchC(config)#
+```
+Copy/Paste the configuration to Switch C:
 ```
 router ospf 1
   router-id 192.168.2.3
@@ -264,6 +274,11 @@ interface as the source interface for establishing BGP connections.
 
 #### SwitchB
 ```
+SwitchB# configure terminal
+SwitchB(config)#
+```
+Copy/Paste the configuration to Switch B:
+```
 router bgp 65000
   bgp router-id 192.168.2.2
   neighbor 192.168.2.3 remote-as 65000
@@ -274,7 +289,13 @@ router bgp 65000
   exit-address-family
 ```
 Leave configuration mode by pressing ```Ctrl-z```.
+
 #### SwitchC
+```
+SwitchC# configure terminal
+SwitchC(config)#
+```
+Copy/Paste the configuration to Switch C:
 ```
 router bgp 65000
   bgp router-id 192.168.2.3
@@ -286,6 +307,7 @@ router bgp 65000
   exit-address-family
 ```
 Leave configuration mode by pressing ```Ctrl-z```.
+
 #### SwitchC
 ```
 SwitchC# show bgp ipv4 unicast summary 
@@ -311,6 +333,11 @@ sessions.
 
 #### SwitchA
 ```
+SwitchA# configure terminal
+SwitchA(config)#
+```
+Copy/Paste the configuration to Switch A:
+```
 router bgp 65001
   bgp router-id 192.168.2.1
   neighbor 192.168.4.1 remote-as 65000
@@ -322,6 +349,11 @@ router bgp 65001
 Leave configuration mode by pressing ```Ctrl-z```.
 
 #### SwitchB
+```
+SwitchB# configure terminal
+SwitchB(config)#
+```
+Copy/Paste the configuration to Switch B:
 ```
 router bgp 65000
   neighbor 192.168.4.0 remote-as 65001
@@ -383,6 +415,11 @@ neighbor 100.1.1.1. This will reset BGP and ensure the route-map is now working
 
 #### SwitchA
 ```
+SwitchA# configure terminal
+SwitchA(config)#
+```
+Copy/Paste the configuration to Switch A:
+```
 ip prefix-list DENY seq 10 deny 10.10.110.1/32
 !
 route-map Deny deny seq 10
@@ -395,7 +432,7 @@ router bgp 65001
 ```
 Leave configuration mode by pressing ```Ctrl-z```.
 ```
-clear bgp 192.168.4.1
+SwitchA# clear bgp 192.168.4.1
 ```
 
 #### HostA
