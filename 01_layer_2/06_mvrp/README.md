@@ -106,8 +106,8 @@ Leave configuration mode by pressing ```Ctrl-z```.
 
 #### SwitchC
 ```
-SwitchB# configure terminal
-SwitchB(config)#
+SwitchC# configure terminal
+SwitchC(config)#
 ```
 Copy/Paste the configuration to Switch C:
 ```
