@@ -337,7 +337,7 @@ LOCAL-PORT  CHASSIS-ID         PORT-ID                      PORT-DESC           
 1/1/3       08:00:09:5b:eb:d3  1/1/3                        1/1/3                        120      SwitchC                            
 ```
 
-### Task 5 - Configure MVRP and STP
+### Task 5: Configure MVRP and STP
 
 On Switch A add VLAN 10, Configure STP making Switch A Root for instance 1 VLAN 10,and Secondary Root for
 Instance 2, VLAN 20 and a add trunk to interface 1/1/1 with MVRP:
@@ -444,7 +444,7 @@ interface 1/1/2
 ```
 Leave configuration mode by pressing ```Ctrl-z```.
 
-### Task 6 - Check Configurations and Output
+### Task 6: Check Configurations and Output
 
 Check the STP topology from Switch D. It can be seen from the output below that:
 - MST1 mapped to VLAN 10 with Root port on interface 1/1/3
