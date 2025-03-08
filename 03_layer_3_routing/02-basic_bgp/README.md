@@ -45,7 +45,7 @@ contain themselves in the AS-Path.
 ## Lab Network Layout
 
 <a name="network-layout"></a>
-![Lab Topology](./resouces/lab-network-layout.png)
+![Lab Topology](./resources/lab-network-layout.png)
 _Figure 1: Lab topology and addresses_
 
 > [!NOTE]
