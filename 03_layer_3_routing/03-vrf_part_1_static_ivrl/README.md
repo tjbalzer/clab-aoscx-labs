@@ -22,7 +22,7 @@ During this lab, you’ll be able to:
 - Configure VRF and attach L3 interfaces to VRF
 - Connect network nodes in a VRF-lite model
 - Test traffic isolation between hosts in different VRFs
-- Configure inter-VRF route leaking to allow communication between hosts and server.
+- Configure inter-VRF route leaking to allow communication between hosts and server
 
 The minimum required AOS-CX Switch Simulator version for this lab is 10.5. It is recommended to use later release 10.6.
 
@@ -54,8 +54,6 @@ SW1(config)#
 
 - SW1
 ```
-vlan 1
-!
 interface 1/1/1
   no shutdown
   description to SW2
@@ -69,8 +67,6 @@ interface 1/1/9
  Leave configuration mode by pressing ```Ctrl-z```.
 - SW2
 ```
-vlan 1
-!
 interface 1/1/1
   no shutdown
   description to HostA
@@ -84,8 +80,6 @@ interface 1/1/9
 Leave configuration mode by pressing ```Ctrl-z```.
 - SW3
 ```
-vlan 1
-!
 interface mgmt
   no shutdown
   ip dhcp
@@ -308,7 +302,7 @@ interface 1/1/9
 ```
 #### Step 5: Verify VRF attachment
 >[!NOTE]
->Before entering the following show commands, leave configuration mode by pressing ```Ctrl-z```, if necessary.
+> Before entering the following show commands, leave configuration mode by pressing ```Ctrl-z```, if necessary.
 - SW1
 ```
 SW1# show vrf
@@ -725,6 +719,9 @@ Configuration of Hosts:
 ...
 ```
 **Ping inside the same VRF:**
+
+Connect to Host B via SSH or docker exec.
+
 Ping ```HostB``` from ```HostA``` (VRF1):
 ```
 [*]─[HostA]─[~]
@@ -751,6 +748,8 @@ PING 10.11.119.10 (10.11.119.10) 56(84) bytes of data.
 3 packets transmitted, 3 received, 0% packet loss, time 2001ms
 rtt min/avg/max/mdev = 6.898/11.428/19.034/5.410 ms
 ```
+Connect to Host D via SSH or docker exec.
+
 Ping ```SW1``` VRF2 IP address from ```HostD``` (VRF2):
 ```
 [x]─[HostD]─[~]
@@ -767,6 +766,8 @@ rtt min/avg/max/mdev = 4.695/5.746/7.504/1.250 ms
 **Ping between VRFs:**
 The purpose of VRFs is to isolate routing domains. As a consequence, without any inter-VRF route-leaking, hosts in VRF1
 should not communicate with hosts in other VRFs.
+
+Connect to Host A via SSH or docker exec.
 
 Ping ```HostD``` (VRF2) from ```HostA``` (VRF1):
 ```
@@ -792,6 +793,8 @@ From 192.168.115.0 icmp_seq=3 Destination Net Unreachable
 --- 10.5.50.10 ping statistics ---
 3 packets transmitted, 0 received, +3 errors, 100% packet loss, time 2002ms
 ```
+Connect to Host D via SSH or docker exec.
+
 Ping ```SRV-services``` (SERVICES VRF) from ```HostD``` (VRF2):
 ```
 [*]─[HostD]─[~]
@@ -806,11 +809,11 @@ Between VRFs the network is unreachable or timeout, as expected.
 The next section explains how to make communication between VRF1 and SERVICES, between VRF2 and SERVICES, and
 maintaining isolation between VRF1 and VRF2.
 
-#### Test 1: connectivity between Hosts
+#### Test 2: Static Inter-VRF Route Leaking
 
 Here are the route-leaking lab objectives:
 
-Hosts in VRF1 need to access server in SERVICES VRF.
+- Hosts in VRF1 need to access server in SERVICES VRF.
 - Hosts in VRF2 need to access server in SERVICES VRF.
 - Hosts in VRF1 should not be able to communicate with hosts in VRF2.
 
