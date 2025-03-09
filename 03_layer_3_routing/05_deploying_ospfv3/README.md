@@ -1,4 +1,12 @@
 # Lab Guide: Deploying OSPFv3
+> [!NOTE]
+> This lab is based on the AOS-CX Switch Simulator Labs. A ```topology.clab.yaml``` file was added to use the lab with [containerlab](https://github.com/srl-labs/containerlab). 
+
+> [!IMPORTANT]
+> This guide assumes that the AOS-CX Switch Simulator is available as a docker container. You can use [vrnetlab](https://github.com/hellt/vrnetlab) to accomplish this.
+
+>[!NOTE]
+> This description is based on the AOS-CX Switch Simulator Lab Guide [Deploying OSPFv3](https://community.arubanetworks.com/HigherLogic/System/DownloadDocumentFile.ashx?DocumentFileKey=9d9e9ed1-93be-4bc3-adcf-e993e17786f8) and includes all necessary changes to use the lab with [containerlab](https://github.com/srl-labs/containerlab).
 
 ## Lab Objective
 At the end of this workshop, you will be able to implement the fundamentals of deploying an OSPFv3 network based on Aruba CX Switches. A successful deployment will show IPv6 HostA and IPv6 HostB have connectivity over the OSPFv3 fabric.

@@ -1,4 +1,12 @@
 # Lab Guide: Configuring OSPF on Aruba CX Switches
+> [!NOTE]
+> This lab is based on the AOS-CX Switch Simulator Labs. A ```topology.clab.yaml``` file was added to use the lab with [containerlab](https://github.com/srl-labs/containerlab). 
+
+> [!IMPORTANT]
+> This guide assumes that the AOS-CX Switch Simulator is available as a docker container. You can use [vrnetlab](https://github.com/hellt/vrnetlab) to accomplish this.
+
+>[!NOTE]
+> This description is based on the AOS-CX Switch Simulator Lab Guide [Configuring OSPF on Aruba CX Switches](https://community.arubanetworks.com/HigherLogic/System/DownloadDocumentFile.ashx?DocumentFileKey=9ba43018-5dc5-4667-ae80-2b8414954758) and includes all necessary changes to use the lab with [containerlab](https://github.com/srl-labs/containerlab).
 
 ## Lab Objective
 At the end of this workshop, you will be able to implement the fundamentals of deploying an OSPFv2 network based on Aruba CX Switches. A successful deployment will show IPv4 HostA and IPv4 HostB have connectivity over the OSPF fabric.
