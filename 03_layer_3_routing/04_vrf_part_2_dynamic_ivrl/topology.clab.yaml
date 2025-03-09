@@ -13,13 +13,16 @@ topology:
   nodes:
     SW1:
       kind: aruba_aoscx
-      #startup-config: configs/sw1.cfg
+      #startup-config: configs/sw1-task3.cfg     # config at the end of task 3 in lab guide
+      #startup-config: configs/sw1.cfg           # final config
     SW2:
       kind: aruba_aoscx
-      #startup-config: configs/sw2.cfg
+      #startup-config: configs/sw2-task3.cfg     # config at the end of task 3 in lab guide
+      #startup-config: configs/sw2.cfg           # final config
     SW3:
       kind: aruba_aoscx
-      #startup-config: configs/sw3.cfg
+      #startup-config: configs/sw3-task3.cfg     # config at the end of task 3 in lab guide
+      #startup-config: configs/sw3.cfg           # final config
     HostA:
       kind: linux
       exec:
