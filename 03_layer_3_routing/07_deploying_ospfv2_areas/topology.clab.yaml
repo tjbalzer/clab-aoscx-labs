@@ -14,10 +14,10 @@ topology:
       #startup-config: configs/switch_a.cfg
     SwitchB:
       kind: aruba_aoscx
-      #startup-config: configs/switch_b.cfg # Config end of Task 4-2 (full OSPF area 1)
+      #startup-config: configs/switch_b.cfg # Config end of Task 4-4 (full OSPF area 1)
     SwitchC:
       kind: aruba_aoscx
-      #startup-config: configs/switch_c.cfg # Config end of Task 4-2 (full OSPF area 1)
+      #startup-config: configs/switch_c.cfg # Config end of Task 4-4 (full OSPF area 1)
     SwitchD:
       kind: aruba_aoscx
       #startup-config: configs/switch_d.cfg
