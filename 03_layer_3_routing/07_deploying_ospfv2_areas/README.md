@@ -44,7 +44,7 @@ Router).
 The initial build of the lab for AS1 involves Area 0 and Area 1 as a regular area. Switch B and Switch C in Area 1 are re-
 configured from a regular OSPF area to a ‘Stub’ area and then as a NSSA in subsequent lab tasks.
 - A _Stub_ area is an area where there are no routers or areas beyond it and it does not advertise external routes (external link advertisements LSA Type 5).
-- A NSSA accepts external routes ( in the form of external link advertisements LSA Type 7) and it is useful sometimes to
+- A _NSSA_ accepts external routes (in the form of external link advertisements LSA Type 7) and it is useful sometimes to
 import external routes from one AS to another whilst still keeping some benefits of a stub area.
 
 ## Lab Network Layout
@@ -66,12 +66,12 @@ For this lab refer to [Figure 1](#network-layout) for topology setup.
 - Open SSH session to each switch and log in with user 'admin' and password 'admin'.
 
 On all devices, bring up required ports:
-#### OSPF-1 and OSPF-2
+#### Switch A to Swutch E
 ```
-OSPF[1-2]# configure terminal
-OSPF[1-2](config)#
+Switch[A-E]# configure terminal
+Switch[A-E](config)#
 ```
-Copy/Paste the configuration to OSPF-1 and OSPF-2:
+Copy/Paste the configuration to all devices:
 ```
 interface 1/1/1-1/1/3
   no shutdown
@@ -106,18 +106,18 @@ SwitchB(config-loopback-if)# ip address 192.168.1.2/32
 
 ### Task 3: Configure OSPF Area 0 and Area 1 for Switches A, B, C and D
 
-The following tasks will be completed in task3 to configure OSPF on switches A,B, C and D.
+The following tasks will be completed in task 3 to configure OSPF on switches A,B, C and D.
 
 On each switch A, B, C, D:
-- Configure a OSPF routing process with appropriate areas and assign a router-id which will be ‘loopback0’
+- Configure a OSPF routing process with appropriate areas and assign a router-id which will be the IP address of interface loopback 0
 - Configure appropriate switch interfaces with OSPF enabled and ensure connectivity is established
-- Ensure neighbor adjacencies are formed between each switch rtr
+- Ensure neighbor adjacencies are formed between each device
 - Review inter-area and intra-area routes in the ospf routing table
-- Review the OSPF Cost of specific routes (Switch A)
+- Review the OSPF Cost of specific routes (switch A)
 
 ### Task 3.1: Configure OSPF Routing
 
-- Configure OSPF routing on Switch A, B, C & D and assign a router-id with loopback 0
+- Configure OSPF routing on Switch A, B, C & D and assign a router-id with loopback 0 IP address
 - Configure IP ospf interfaces
 
 #### Switch A - Area 0
@@ -125,7 +125,7 @@ On each switch A, B, C, D:
 SwitchA# configure terminal
 SwitchA(config)#
 ```
-Copy/Paste the configuration to SwitchA:
+Copy/Paste the configuration to switch A:
 ```
 router ospf 1
   router-id 192.168.1.1
@@ -146,7 +146,7 @@ Leave configuration mode by pressing ```Ctrl-z```.
 SwitchB# configure terminal
 SwitchB(config)#
 ```
-Copy/Paste the configuration to SwitchB:
+Copy/Paste the configuration to switch B:
 ```
 router ospf 1
   router-id 192.168.1.2
@@ -173,7 +173,7 @@ Leave configuration mode by pressing ```Ctrl-z```.
 SwitchC# configure terminal
 SwitchC(config)#
 ```
-Copy/Paste the configuration to Switch C:
+Copy/Paste the configuration to switch C:
 ```
 router ospf 1
   router-id 192.168.2.1
@@ -199,7 +199,7 @@ Leave configuration mode by pressing ```Ctrl-z```.
 SwitchD# configure terminal
 SwitchD(config)#
 ```
-Copy/Paste the configuration to SwitchD:
+Copy/Paste the configuration to switch D:
 ```
 router ospf 1
   router-id 192.168.2.2
@@ -246,8 +246,8 @@ Neighbor ID      Priority  State             Nbr Address       Interface
 ```
 
 Repeat for Switch C and D:
-- SwitchC will have neighbor adjacencies with Switch B and D
-- SwitchE will be configured in subsequent tasks
+- Switch C will have neighbor adjacencies with switch B and D
+- Switch E will be configured in subsequent tasks
 
 ### Task 3.3: Review Routing Tables on Switches
 Review ospf routing table output on sample switches in area 0 and Area 1 and note the intra-area and inter area routes
@@ -281,11 +281,10 @@ Total Number of Routes : 6
 Each switch has a loopback 0 ip address configured with an appropriate ospf area configuration. The loopback address are
 injected into the ospf routing table, advertised and presented as a ‘reachable’ subnet on each switch receiving the ospf updates.
 
-> [!NOTE]
-> The intra-area and inter area-routes from Switch A
+**Note the intra-area and inter area-routes from Switch A.**
 
 _Intra-area routes_ refer to updates (routing) that are passed between ospf routers within the same area and do not need to
-traverse the backbone (Area 0 ).
+traverse the backbone (Area 0).
 
 _Inter-area routes_ refer to updates that are passed between areas and required to traverse Area 0
 
@@ -328,19 +327,19 @@ on switch D in the switch A routing table as a metric reference.
 192.168.2.2/32     (I)
      via 192.168.3.1 interface 1/1/1, cost 300 distance 110
 ```
-Route to 192.168.2.2/32 will be presented as a cost of _300_ from the output in Switch A’s route table. OSPF
-OSPF routing metric OSPF uses following formula to calculate the cost.
+Route to 192.168.2.2/32 will be presented as a cost of _300_ from the output in Switch A’s route table (OSPF routing metric).
+OSPF uses following formula to calculate the cost:
 
-**Cost = Reference bandwidth / Interface bandwidth in bps**
+_Cost = Reference bandwidth / Interface bandwidth in bps_
 
 Reference bandwidth was defined as arbitrary value in OSPF documentation (RFC 2338). Vendors need to use their own
 reference bandwidth. Recent versions of the Aruba AOS-CX simulator use 100,000 Mbps as a reference bandwidth (100.000.000 bps).
 
-**Switch A Interface Speed for interface 1/1/1**
+Check SwitchA interface speed for interface 1/1/1:
 
 Run ```show interface brief``` or ```show interface 1/1/1``` from the CLI to find the default interface speed.
 
-Example shown with ‘show interface brief’ command:
+Example shown with ```show interface brief``` command:
 ```
 SwitchA# show interface brief 
 --------------------------------------------------------------------------------------------------------
@@ -350,7 +349,7 @@ Port           Native  Mode   Type           Enabled Status  Reason             
 1/1/1          --      routed --             yes     up                              1000    --
 ...
 ```
-Using the bandwidth formula we have ```100,000/1000 = 100``` (Reference bandwidth in Mbps/interface bandwidth in Mbps = a link cost of
+Using the bandwidth formula we have ```100,000/1000 = 100``` (reference bandwidth in Mbps/interface bandwidth in Mbps = link cost of
 100).
 
 As we have standard default settings and common link costs across our lab network, we can ascertain that the route
@@ -396,8 +395,8 @@ The ```no ip ospf cost``` command resets the cost value back to the default.
 Importing routes and redistributing into OSPF is supported by creating an ASBR, an Autonomous System Boundary Router.
 
 In this task you will create:
-- A separate OSPF routing process: on Switch C – (process 2) in area 0
-- A routing OSPF process in Switch D in area 0
+- A separate OSPF routing process on switch C in area 0 (process 2)
+- A routing OSPF process in switch D in area 0
 - Route redistribute OSPF routes (from OSPF process 2) into OSPF process 1 on switch C
 - Route redistribute OSPF routes (from OSPF process 1) into OSPF process 2 on switch C
 - Review ospf redistributed route metrics
@@ -411,7 +410,7 @@ From the configuration context, create an additional loopback address for the ro
 SwitchC# configure terminal
 SwitchC(config)#
 ```
-Copy/Paste the configuration to Switch C:
+Copy/Paste the configuration to switch C:
 ```
 interface loopback 1
   ip address 192.168.12.2/32
@@ -427,7 +426,7 @@ Add Interface Loopback 1 to OSPF process 2:
 interface loopback 1
   ip ospf 2 area 0.0.0.0
 ```
-Configure OSPF on interface 1/1/3 to Switch E:
+Configure OSPF on interface 1/1/3 to switch E:
 ```
 interface 1/1/3
   ip address 192.168.6.0/31
@@ -443,7 +442,7 @@ From the configuration context, create the OSPF routing process:
 SwitchE# configure terminal
 SwitchE(config)#
 ```
-Copy/Paste the configuration to Switch E:
+Copy/Paste the configuration to switch E:
 ```
 router ospf 1
   router-id 192.168.12.1
@@ -465,10 +464,9 @@ Leave configuration mode by pressing ```Ctrl-z```.
 
 ### Task 4.2: Validate OSPF Neighbors and Routes
 
-
 #### Validate neighbor adjacency has been formed between Switch C and Switch D
 
-Sample output Switch E:
+Sample output switch E:
 ```
 SwitchE# show ip ospf neighbors 
 VRF : default                          Process : 1
@@ -484,7 +482,7 @@ Neighbor ID      Priority  State             Nbr Address       Interface
 #### Review OSPF routing table
 On switches B, C and D, use command ```show ip ospf routes```.
 
-Sample output Switch C:
+Sample output switch C:
 ```
 SwitchC# show ip ospf routes 
 Codes: i - Intra-area route, I - Inter-area route
@@ -519,28 +517,28 @@ Total Number of Routes : 2
      via 192.168.6.1 interface 1/1/3, cost 100 distance 110
 ```
 
-- On switch B , the ospf route table will not include routes learnt from Switch C ospf process ID 2 as these routes are
+- On switch B, the OSPF route table will not include routes learnt from switch C OSPF process ID 2 as these routes are
 learnt within a different Autonomous System.
-- On Switch E ,the ospf route table will not include routes from ospf process id 1 as they are again routes learnt within a
+- On switch E, the OSPF route table will not include routes from OSPF process id 1 as they are again routes learnt within a
 different Autonomous System.
 
 ### Task 4.3: Create an ASBR with Route Redistribute Commands
 
 To include routes from different AS (Autonomous Systems) so they propagate within our routed lab network, we need to
-redistribute routes on Switch C and by doing so, we make Switch C an ASBR: an Autonomous System Boundary Router.
+redistribute routes on switch C and by doing so, we make switch C an ASBR (Autonomous System Boundary Router).
 
 This is a 2-step process:
-1. Redistribute routes from ospf process 2 into ospf process 1
-2. Redistribute routes from ospf process 1 into ospf process 2
+1. Redistribute routes from OSPF process 2 into OSPF process 1
+2. Redistribute routes from OSPF process 1 into OSPF process 2
 
 #### Switch C
-First, we route redistribute OSPF routes (from ospf process 2) into ospf process 1 on switch C.
+First, we route redistribute OSPF routes (from OSPF process 2) into OSPF process 1 on switch C.
 ```
 SwitchE# configure terminal
 SwitchE(config)#
 ```
 Within the ```router ospf 1``` context add the following commands:
-Copy/Paste the configuration to Switch E:
+Copy/Paste the configuration to switch E:
 ```
 router ospf 1
   redistribute ospf 2
@@ -551,7 +549,7 @@ As second step, we repeat the process for ospf process 2, we route redistribute 
 process 2 on switch C:
 
 Within the ```router ospf 2``` context add the following commands#
-Copy/Paste the configuration to Switch E:
+Copy/Paste the configuration to switch E:
 ```
 router ospf 2
   redistribute ospf 1 
@@ -654,7 +652,7 @@ E1 routes is the cost of the external metric and the additional internal cost wi
 The cost of E2 routes is always the external metric value of the route and the internal cost to/from the ASBR is ignored.
 - E2 route(s) do not include the internal cost of the ASBR. They will always have the same external cost.
 
-Routes 192.168.1.1/32 & 192.168.3.0/31 via Switch A have traversed 1x ABR(Switch) and 1 x ASBR (SwitchC) which collectively
+Routes 192.168.1.1/32 & 192.168.3.0/31 via switch A have traversed 1x ABR (switch B) and 1 x ASBR (switch C) which collectively
 provides the accumulated metric of _200_ on receipt at switch E.
 
 ### Task 5: Stub Area
@@ -670,7 +668,7 @@ SwitchB# configure terminal
 SwitchB(config)#
 ```
 From within ```router ospf 1``` config context:
-Copy/Paste the configuration to Switch B:
+Copy/Paste the configuration to switch B:
 ```
 router ospf 1
   area 0.0.0.1 stub
@@ -684,14 +682,14 @@ SwitchC# configure terminal
 SwitchC(config)#
 ```
 From within ```router ospf 1``` config context:
-Copy/Paste the configuration to Switch C:
+Copy/Paste the configuration to switch C:
 ```
 router ospf 1
   area 0.0.0.1 stub
 ```
 Leave configuration mode by pressing ```Ctrl-z```.
 
-Check that neighbor adjacency has formed with Switch B:
+Check that neighbor adjacency has formed with switch B:
 ```
 SwitchC# show ip ospf neighbors 
 VRF : default                          Process : 1
@@ -707,8 +705,8 @@ Neighbor ID      Priority  State             Nbr Address       Interface
 ```
 Display switch C ospf routing table.
 
-You should note a significant change in the ospf route table on switch C. Switch B, as the ABR , now injects a default route to
-it’s neighbor Switch B, as it is configured as a stub area .
+You should note a significant change in the ospf route table on switch C. Switch B, as the ABR, now injects a default route to
+it’s neighbor switch B, as it is configured as a stub area .
 
 Sample output:
 
@@ -744,7 +742,7 @@ On switch B, within ```router ospf 1``` config context, add:
 SwitchB# configure terminal
 SwitchB(config)#
 ```
-Copy/Paste the configuration to Switch B:
+Copy/Paste the configuration to switch B:
 ```
 router ospf 1
   area 0.0.0.1 stub no-summary
@@ -800,7 +798,7 @@ On Switch B remove the stub area configuration from ```router ospf 1```config co
 SwitchB# configure terminal
 SwitchB(config)#
 ```
-Copy/Paste the configuration to Switch B:
+Copy/Paste the configuration to switch B:
 ```
 router ospf 1
   no area 0.0.0.1 stub
@@ -813,12 +811,12 @@ On switch C ```no shut``` interface 1/1/3:
 SwitchC# configure terminal
 SwitchC(config)#
 ```
-Copy/Paste the configuration to Switch B:
+Copy/Paste the configuration to switch B:
 ```
 interface 1/1/3
   no shutdown
 ```
-On Switch C remove the stub area configuration from ```router ospf 1``` config context and add the NSSA configuration:
+On switch C remove the stub area configuration from ```router ospf 1``` config context and add the NSSA configuration:
 ```
 router ospf 1
   no area 0.0.0.1 stub
@@ -826,7 +824,7 @@ router ospf 1
 ```
 Leave configuration mode by pressing ```Ctrl-z```.
 
-Check that Switch B & C have an ospf neighbor adjacency (```show ip ospf neighbors```).
+Check that switch B & C have an ospf neighbor adjacency (```show ip ospf neighbors```).
 
 On switch C, the redistribute commands into process ospf 1 and process opsf 2 should still be present:
 
@@ -902,12 +900,6 @@ Total Number of Routes : 7
      via 192.168.4.1 interface 1/1/2, cost 100 distance 110
 ```
 External redistributed routes from switch C (OSPF process 2) are tagged as E2 routes and populated in the route table.
-
-
-
-
-
-
 
 ## Appendix - Complete Configurations
 
