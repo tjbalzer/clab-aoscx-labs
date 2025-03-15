@@ -31,7 +31,6 @@ _Figure 1: Lab Topology and Addresses_
 
 ## Lab Tasks
 
-
 ### Task 1: Lab Setup
 
 For this lab refer to [Figure 1](#network-layout) for topology setup.
