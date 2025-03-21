@@ -9,7 +9,8 @@
 >[!NOTE]
 > This description is based on the AOS-CX Switch Simulator Lab Guide [OSPFv2 Areas Basics](https://community.arubanetworks.com/HigherLogic/System/DownloadDocumentFile.ashx?DocumentFileKey=b145c14d-8929-4695-912b-3d04be39eb3f) and includes all necessary changes to use the lab with [containerlab](https://github.com/srl-labs/containerlab).
 
-## Lab ObjectivThe OSPF (Open Shortest Path Protocol) is one of the most popular routing protocols for IP Networks. It uses a link state
+## Lab Objective
+
 The OSPF (Open Shortest Path Protocol) is one of the most popular routing protocols for IP Networks. It uses a link state
 routing (LSR) algorithm which is performed by every switch router mode in the network. OSPF leverages areas and it is these
 area concepts that form the basis of the LAB which introduces the ‘Backbone area’, ‘Regular Areas’ including Stub areas and
@@ -106,7 +107,7 @@ SwitchB(config-loopback-if)# ip address 192.168.1.2/32
 
 ### Task 3: Configure OSPF Area 0 and Area 1 for Switches A, B, C and D
 
-The following tasks will be completed in task 3 to configure OSPF on switches A,B, C and D.
+The following tasks will be completed in task 3 to configure OSPF on switches A, B, C and D.
 
 On each switch A, B, C, D:
 - Configure a OSPF routing process with appropriate areas and assign a router-id which will be the IP address of interface loopback 0
