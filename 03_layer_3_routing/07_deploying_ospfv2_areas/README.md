@@ -23,7 +23,7 @@ At the end of this workshop you will be able to understand and configure ospf ar
 routes, simple route redistributions and the use of stub areas and NSSAs (Not so stubby areas).
 
 ## Lab Overview
-The lab comprises of two Autonomous systems presented as AS1 and AS2. AS1 comprises of two areas , Area 0 & 1 with AS2
+The lab comprises of two autonomous systems presented as AS1 and AS2. AS1 comprises of two areas , Area 0 & 1 with AS2
 redistributing into AS1 and vice-versa.
 ### AS – Autonomous Systems
 The two AS systems in this lab are discreet/separate routing systems each running its own LSR (Link State Routing) algorithm
