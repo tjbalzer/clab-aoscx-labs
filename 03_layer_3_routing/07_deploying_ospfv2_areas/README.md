@@ -67,7 +67,7 @@ For this lab refer to [Figure 1](#network-layout) for topology setup.
 - Open SSH session to each switch and log in with user 'admin' and password 'admin'.
 
 On all devices, bring up required ports:
-#### Switch A to Swutch E
+#### Switch A to Switch E
 ```
 Switch[A-E]# configure terminal
 Switch[A-E](config)#
