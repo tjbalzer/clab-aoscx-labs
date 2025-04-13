@@ -13,16 +13,16 @@ topology:
   nodes:
     Switch1:
       kind: aruba_aoscx
-      #startup-config: configs/switch_1.cfg
+      startup-config: configs/switch_1.cfg
     Switch2:
       kind: aruba_aoscx
-      #startup-config: configs/switch_2.cfg
+      startup-config: configs/switch_2.cfg
     Switch3:
       kind: aruba_aoscx
-      #startup-config: configs/switch_3.cfg
+      startup-config: configs/switch_3.cfg
     Switch4:
       kind: aruba_aoscx
-      #startup-config: configs/switch_4.cfg
+      startup-config: configs/switch_4.cfg
     Host1:
       kind: linux
       exec:
